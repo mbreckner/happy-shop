@@ -5,7 +5,7 @@ import com.breckner.happyshop.domain.model.CartId;
 import com.breckner.happyshop.domain.model.CartItemId;
 import lombok.Value;
 
-import java.math.BigInteger;
+import java.math.BigDecimal;
 
 public interface AddCartItemsUseCase {
 
@@ -16,6 +16,6 @@ public interface AddCartItemsUseCase {
         CartId shoppingCartId;
         Barcode barcode;
         CartItemId cartItemId;
-        BigInteger quantity;
+        BigDecimal quantity;
     }
 }

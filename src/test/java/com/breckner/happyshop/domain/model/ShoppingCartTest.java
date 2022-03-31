@@ -5,6 +5,8 @@ import com.breckner.happyshop.domain.service.DateTimeHelper;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.time.Clock;
 import java.time.Instant;
 import java.time.ZoneId;
@@ -64,6 +66,21 @@ class ShoppingCartTest {
     }
 
     @Test
+    void shouldGetTotalPrice() {
+        ShoppingCart shoppingCart = ShoppingCart.of(
+            CartId.of("1"), Country.GERMANY, DateTimeHelper.now(),
+            Map.of(
+                CartItemId.of("1"),
+                CartItem.of(CartItemId.of("1"), mockProduct(BigDecimal.valueOf(1.20)), BigDecimal.valueOf(5)),
+                CartItemId.of("2"),
+                CartItem.of(CartItemId.of("2"), mockProduct(BigDecimal.valueOf(33.10)), BigDecimal.valueOf(2))
+            )
+        );
+
+        assertThat(shoppingCart.getTotalPrice(), is(BigDecimal.valueOf(72.20)));
+    }
+
+    @Test
     void shouldGetCopyOfCartItems() {
         ShoppingCart shoppingCart = ShoppingCart.of(CartId.of("1"), Country.SWITZERLAND, DateTimeHelper.now(),
             Map.of(CartItemId.of("1"), mockCartItem("1")));
@@ -84,6 +101,10 @@ class ShoppingCartTest {
 
     private CartItem mockCartItem(String id) {
         return CartItem.of(CartItemId.of(id), null, null);
+    }
+
+    private Product mockProduct(BigDecimal unitPrice) {
+        return Product.of(Barcode.of("1"), unitPrice, "name");
     }
 
 }

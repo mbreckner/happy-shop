@@ -1,4 +1,4 @@
-package com.breckner.happyshop.adapter.out.persistence.inmemory;
+package com.breckner.happyshop.adapter.out.persistence.cart.inmemory;
 
 import com.breckner.happyshop.domain.model.CartId;
 import com.breckner.happyshop.domain.model.Country;
@@ -6,7 +6,6 @@ import com.breckner.happyshop.domain.model.ShoppingCart;
 import com.breckner.happyshop.domain.service.DateTimeHelper;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
 import java.util.Map;
 
 import static org.hamcrest.Matchers.is;

@@ -1,4 +1,4 @@
-package com.breckner.happyshop.adapter.out.persistence.jpa;
+package com.breckner.happyshop.adapter.out.persistence.cart.jpa;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

@@ -33,9 +33,7 @@ class GetCartController {
         produces = MediaType.APPLICATION_JSON_VALUE
     )
     @ResponseStatus(value = HttpStatus.OK)
-    public GetCartResponseDto create(
-        @PathVariable @NotBlank String cartId
-        ) {
+    public GetCartResponseDto create(@PathVariable @NotBlank String cartId) {
 
         ShoppingCart shoppingCart = getCartUseCase.get(CartId.of(cartId));
         return getCartResponseDtoMapper.toResponseDto(shoppingCart);

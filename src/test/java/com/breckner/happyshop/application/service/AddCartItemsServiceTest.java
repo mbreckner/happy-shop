@@ -49,7 +49,7 @@ class AddCartItemsServiceTest {
         Barcode barcode = Barcode.of("barcode");
         Product product = Product.of(barcode, BigDecimal.valueOf(1.50), "Bananas");
         AddCartItemsUseCase.AddCartItemsInput input = new AddCartItemsUseCase.AddCartItemsInput(
-            CartId.of("1"), barcode, CartItemId.of("cartItemId"), BigInteger.TWO
+            CartId.of("1"), barcode, CartItemId.of("cartItemId"), BigDecimal.valueOf(2.00)
         );
         when(loadCartPort.byId(any())).thenReturn(Optional.of(shoppingCart));
         when(loadProductPort.byBarcode(barcode)).thenReturn(Optional.of(product));
@@ -70,7 +70,7 @@ class AddCartItemsServiceTest {
     void shouldThrowBusinessRuleException_WhenShoppingCartDoesNotExist() {
         Barcode barcode = Barcode.of("barcode");
         AddCartItemsUseCase.AddCartItemsInput input = new AddCartItemsUseCase.AddCartItemsInput(
-            CartId.of("1"), barcode, CartItemId.of("cartItemId"), BigInteger.TWO
+            CartId.of("1"), barcode, CartItemId.of("cartItemId"), BigDecimal.valueOf(2.0)
         );
         when(loadCartPort.byId(any())).thenReturn(Optional.empty());
 
@@ -81,7 +81,7 @@ class AddCartItemsServiceTest {
     void shouldThrowBusinessRuleException_WhenProductDoesNotExist() {
         Barcode barcode = Barcode.of("barcode");
         AddCartItemsUseCase.AddCartItemsInput input = new AddCartItemsUseCase.AddCartItemsInput(
-            CartId.of("1"), barcode, CartItemId.of("cartItemId"), BigInteger.TWO
+            CartId.of("1"), barcode, CartItemId.of("cartItemId"), BigDecimal.valueOf(2.0)
         );
         when(loadCartPort.byId(any())).thenReturn(Optional.of(shoppingCart));
         when(loadProductPort.byBarcode(barcode)).thenReturn(Optional.empty());

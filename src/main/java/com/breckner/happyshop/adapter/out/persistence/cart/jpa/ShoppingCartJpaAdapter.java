@@ -1,4 +1,4 @@
-package com.breckner.happyshop.adapter.out.persistence.jpa;
+package com.breckner.happyshop.adapter.out.persistence.cart.jpa;
 
 import com.breckner.happyshop.application.port.out.LoadCartPort;
 import com.breckner.happyshop.application.port.out.PersistCartPort;

@@ -40,7 +40,9 @@ public class ShoppingCart {
     }
 
     public BigDecimal getTotalPrice() {
-        return BigDecimal.valueOf(0.00);
+        return getItems().stream()
+            .map(cartItem -> cartItem.getProduct().getUnitPrice().multiply(cartItem.getQuantity()))
+            .reduce(BigDecimal.valueOf(0.0), BigDecimal::add);
     }
 
     public List<CartItem> getItems() {

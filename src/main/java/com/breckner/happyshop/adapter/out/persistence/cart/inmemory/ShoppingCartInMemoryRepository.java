@@ -1,4 +1,4 @@
-package com.breckner.happyshop.adapter.out.persistence.inmemory;
+package com.breckner.happyshop.adapter.out.persistence.cart.inmemory;
 
 import com.breckner.happyshop.domain.model.CartId;
 import com.breckner.happyshop.domain.model.ShoppingCart;
