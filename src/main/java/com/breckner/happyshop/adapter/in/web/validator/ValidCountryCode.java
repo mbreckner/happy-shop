@@ -1,7 +1,5 @@
 package com.breckner.happyshop.adapter.in.web.validator;
 
-import com.breckner.happyshop.adapter.in.web.CountryCodeValidator;
-
 import javax.validation.Constraint;
 import javax.validation.Payload;
 import java.lang.annotation.ElementType;

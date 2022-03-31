@@ -1,5 +1,7 @@
 package com.breckner.happyshop.adapter.in.web;
 
+import com.breckner.happyshop.domain.model.exception.NotFoundException;
+import lombok.Data;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -26,9 +28,16 @@ public class ExceptionHandler {
         return errors;
     }
 
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @org.springframework.web.bind.annotation.ExceptionHandler(NotFoundException.class)
+    public Map<String, String> handleExceptions(NotFoundException ex) {
+        return Map.of("message", ex.getMessage());
+    }
+
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @org.springframework.web.bind.annotation.ExceptionHandler(Exception.class)
     public Map<String, String> handleExceptions(Exception ex) {
         return Map.of("message", ex.getMessage());
     }
+
 }

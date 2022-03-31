@@ -1,7 +1,7 @@
 package com.breckner.happyshop.application.service;
 
 import com.breckner.happyshop.application.port.in.CreateCartUseCase;
-import com.breckner.happyshop.application.port.out.PersistShoppingCartPort;
+import com.breckner.happyshop.application.port.out.PersistCartPort;
 import com.breckner.happyshop.domain.model.Country;
 import com.breckner.happyshop.domain.model.ShoppingCart;
 import org.junit.jupiter.api.Assertions;
@@ -24,7 +24,7 @@ import static org.mockito.BDDMockito.then;
 class CreateCartServiceTest {
 
     @MockBean
-    private PersistShoppingCartPort persistShoppingCartPort;
+    private PersistCartPort persistCartPort;
 
     @Autowired
     private CreateCartUseCase createCartUseCase;
@@ -36,7 +36,7 @@ class CreateCartServiceTest {
         ShoppingCart shoppingCart = createCartUseCase.create(input);
 
         Assertions.assertNotNull(shoppingCart);
-        then(persistShoppingCartPort).should().persist(shoppingCart);
+        then(persistCartPort).should().persist(shoppingCart);
     }
 
     @Test

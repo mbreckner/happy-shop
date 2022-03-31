@@ -1,6 +1,5 @@
-package com.breckner.happyshop.adapter.in.web;
+package com.breckner.happyshop.adapter.in.web.validator;
 
-import com.breckner.happyshop.adapter.in.web.validator.ValidCountryCode;
 import com.breckner.happyshop.domain.model.Country;
 
 import javax.validation.ConstraintValidator;

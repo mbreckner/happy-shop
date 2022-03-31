@@ -30,16 +30,16 @@ class CreateCartController {
         consumes = MediaType.APPLICATION_JSON_VALUE
     )
     @ResponseStatus(value = HttpStatus.CREATED)
-    public CreateShoppingCartResponseDto create(@RequestBody @Valid CreateShoppingCartRequestDto request) {
+    public CreateCartResponseDto create(@RequestBody @Valid CreateCartRequestDto request) {
 
         Country country = Country.byCode(request.getCountryCode());
         ShoppingCart shoppingCart = createCartUseCase.create(new CreateCartUseCase.CreateCartInput(country));
 
-        return new CreateShoppingCartResponseDto(shoppingCart.getId().toString());
+        return new CreateCartResponseDto(shoppingCart.getId().toString());
     }
 
     @Data
-    static class CreateShoppingCartRequestDto {
+    static class CreateCartRequestDto {
         @ValidCountryCode
         @JsonProperty("country_code")
         private String countryCode;
@@ -47,7 +47,7 @@ class CreateCartController {
 
     @Data
     @AllArgsConstructor
-    static class CreateShoppingCartResponseDto {
+    static class CreateCartResponseDto {
         String id;
     }
 }
