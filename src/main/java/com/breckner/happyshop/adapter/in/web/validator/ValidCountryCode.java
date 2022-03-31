@@ -12,7 +12,7 @@ import java.lang.annotation.Target;
 @Constraint(validatedBy = CountryCodeValidator.class)
 public @interface ValidCountryCode {
 
-    String message() default "tipoArchivo path no es válido";
+    String message() default "country code is not valid";
 
     Class<?>[] groups() default {};
 

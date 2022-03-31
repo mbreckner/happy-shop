@@ -35,7 +35,7 @@ class CreateCartController {
         Country country = Country.byCode(request.getCountryCode());
         ShoppingCart shoppingCart = createCartUseCase.create(new CreateCartUseCase.CreateCartInput(country));
 
-        return new CreateCartResponseDto(shoppingCart.getId().toString());
+        return new CreateCartResponseDto(shoppingCart.getId().getValue());
     }
 
     @Data
