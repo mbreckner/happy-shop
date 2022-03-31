@@ -12,6 +12,7 @@ import java.time.ZonedDateTime;
 
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.notNullValue;
 
 class ShoppingCartTest {
 
@@ -22,6 +23,7 @@ class ShoppingCartTest {
 
         ShoppingCart shoppingCart = ShoppingCart.create(Country.SWITZERLAND);
 
+        assertThat(shoppingCart.getId(), is(notNullValue()));
         assertThat(shoppingCart.getCountry(), is(Country.SWITZERLAND));
         assertThat(shoppingCart.getCreatedDate(), is(DateTimeHelper.now()));
         assertThat("products should be empty", shoppingCart.getProducts().isEmpty());
