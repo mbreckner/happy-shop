@@ -1,4 +1,4 @@
-package com.breckner.happyshop.domain;
+package com.breckner.happyshop.domain.model;
 
 import com.breckner.happyshop.domain.model.Country;
 import com.breckner.happyshop.domain.model.ShoppingCart;

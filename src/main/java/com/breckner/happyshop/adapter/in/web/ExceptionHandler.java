@@ -15,7 +15,7 @@ import java.util.Map;
 public class ExceptionHandler {
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @org.springframework.web.bind.annotation.ExceptionHandler(Exception.class)
+    @org.springframework.web.bind.annotation.ExceptionHandler(MethodArgumentNotValidException.class)
     public Map<String, String> handleValidationExceptions(MethodArgumentNotValidException ex) {
         Map<String, String> errors = new HashMap<>();
         ex.getBindingResult().getAllErrors().forEach((error) -> {
@@ -24,5 +24,11 @@ public class ExceptionHandler {
             errors.put(fieldName, errorMessage);
         });
         return errors;
+    }
+
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    @org.springframework.web.bind.annotation.ExceptionHandler(Exception.class)
+    public Map<String, String> handleExceptions(Exception ex) {
+        return Map.of("message", ex.getMessage());
     }
 }
