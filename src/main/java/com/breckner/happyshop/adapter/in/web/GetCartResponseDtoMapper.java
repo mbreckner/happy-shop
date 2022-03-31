@@ -1,9 +1,11 @@
 package com.breckner.happyshop.adapter.in.web;
 
+import com.breckner.happyshop.domain.model.CartItem;
 import com.breckner.happyshop.domain.model.ShoppingCart;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class GetCartResponseDtoMapper {
@@ -16,7 +18,24 @@ public class GetCartResponseDtoMapper {
             shoppingCart.getCountry().displayName,
             shoppingCart.getCreatedDate(),
             shoppingCart.getCountry().currency.code,
-            List.of()
+            toCartItemDtoList(shoppingCart.getItems())
+        );
+    }
+
+    private List<GetCartController.CartItemDto> toCartItemDtoList(List<CartItem> cartItems) {
+        return cartItems.stream()
+            .map(this::toCartItemDto)
+            .collect(Collectors.toList());
+    }
+
+    private GetCartController.CartItemDto toCartItemDto(CartItem cartItem) {
+        return new GetCartController.CartItemDto(
+            cartItem.getId().getValue(),
+            new GetCartController.ProductDto(
+                cartItem.getProduct().getBarcode().getValue(),
+                cartItem.getProduct().getUnitPrice(),
+                cartItem.getProduct().getDescription()),
+            cartItem.getQuantity()
         );
     }
 }

@@ -1,8 +1,7 @@
 package com.breckner.happyshop.adapter.in.web;
 
 import com.breckner.happyshop.application.port.in.GetCartUseCase;
-import com.breckner.happyshop.domain.model.CartId;
-import com.breckner.happyshop.domain.model.ShoppingCart;
+import com.breckner.happyshop.domain.model.*;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -48,13 +47,23 @@ class GetCartController {
         @JsonProperty("country_name") String countryName;
         ZonedDateTime created;
         String currency;
-        List<ProductDto> products;
+        List<CartItemDto> cartItems;
+    }
+
+    @Data
+    @AllArgsConstructor
+    static class CartItemDto {
+        private String id;
+        private ProductDto product;
+        private BigDecimal quantity;
     }
 
     @Data
     @AllArgsConstructor
     static class ProductDto {
-
+        private String barcode;
+        private BigDecimal unitPrice;
+        private String description;
     }
 }
 

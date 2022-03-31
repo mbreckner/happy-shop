@@ -1,8 +1,6 @@
 package com.breckner.happyshop.adapter.in.web;
 
-import com.breckner.happyshop.domain.model.CartId;
-import com.breckner.happyshop.domain.model.Country;
-import com.breckner.happyshop.domain.model.ShoppingCart;
+import com.breckner.happyshop.domain.model.*;
 import com.breckner.happyshop.domain.service.DateTimeHelper;
 import org.junit.jupiter.api.Test;
 
@@ -20,13 +18,21 @@ class GetCartResponseDtoMapperTest {
     GetCartResponseDtoMapper mapper = new GetCartResponseDtoMapper();
 
     @Test
-    void xx() {
+    void shouldMap() {
         DateTimeHelper.setClock(Clock.fixed(Instant.parse("2022-03-09T10:15:30Z"), ZoneId.of("UTC")));
         ShoppingCart shoppingCart = ShoppingCart.of(
             CartId.of("id_1"),
             Country.SWITZERLAND,
             DateTimeHelper.now(),
-            Map.of()
+            Map.of(CartItemId.of("1"), CartItem.of(
+                CartItemId.of("1"),
+                Product.of(
+                    Barcode.of("barcode"),
+                    BigDecimal.valueOf(0.60),
+                    "bananas"
+                ),
+                BigDecimal.valueOf(5)
+            ))
         );
 
         GetCartController.GetCartResponseDto responseDto = mapper.toResponseDto(shoppingCart);
@@ -35,8 +41,14 @@ class GetCartResponseDtoMapperTest {
         assertThat(responseDto.getCountryCode(), is("CHE"));
         assertThat(responseDto.getCountryName(), is("Switzerland"));
         assertThat(responseDto.getCurrency(), is("CHF"));
-        assertThat(responseDto.getTotalPrice(), is(BigDecimal.valueOf(0.00)));
+        assertThat(responseDto.getTotalPrice(), is(BigDecimal.valueOf(3.00)));
         assertThat(responseDto.getCreated(), is(DateTimeHelper.now()));
+        assertThat(responseDto.getCartItems().size(), is(1));
+        assertThat(responseDto.getCartItems().get(0).getId(), is("1"));
+        assertThat(responseDto.getCartItems().get(0).getQuantity(), is(BigDecimal.valueOf(5)));
+        assertThat(responseDto.getCartItems().get(0).getProduct().getBarcode(), is("barcode"));
+        assertThat(responseDto.getCartItems().get(0).getProduct().getUnitPrice(), is(BigDecimal.valueOf(0.60)));
+        assertThat(responseDto.getCartItems().get(0).getProduct().getDescription(), is("bananas"));
 
     }
 

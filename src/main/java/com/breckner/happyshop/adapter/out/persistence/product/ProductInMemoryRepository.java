@@ -16,7 +16,7 @@ class ProductInMemoryRepository {
 
     private final List<Product> products = List.of(
         Product.of(Barcode.of("90001"), BigDecimal.valueOf(0.60), "Bananas"),
-        Product.of(Barcode.of("90001"), BigDecimal.valueOf(39.9), "Gin Mare")
+        Product.of(Barcode.of("90002"), BigDecimal.valueOf(39.9), "Gin Mare")
     );
 
     public Optional<Product> findByBarcode(Barcode barcode) {
