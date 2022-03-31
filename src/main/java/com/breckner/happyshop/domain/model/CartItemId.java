@@ -7,11 +7,7 @@ import java.util.UUID;
 
 @Value(staticConstructor = "of")
 @EqualsAndHashCode
-public class CartId {
+public class CartItemId {
 
     String value;
-
-    public static CartId generate() {
-        return CartId.of(UUID.randomUUID().toString());
-    }
 }

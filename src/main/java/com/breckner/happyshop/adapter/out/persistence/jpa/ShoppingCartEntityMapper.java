@@ -5,7 +5,7 @@ import com.breckner.happyshop.domain.model.Country;
 import com.breckner.happyshop.domain.model.ShoppingCart;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.Map;
 
 @Service
 class ShoppingCartEntityMapper {
@@ -23,7 +23,7 @@ class ShoppingCartEntityMapper {
             CartId.of(jpaEntity.getId()),
             Country.byCode(jpaEntity.getCountryCode()),
             jpaEntity.getCreatedDate(),
-            List.of()
+            Map.of()
         );
     }
 

@@ -3,13 +3,13 @@ package com.breckner.happyshop.domain.model;
 import lombok.EqualsAndHashCode;
 import lombok.Value;
 
-import java.math.BigDecimal;
+import java.math.BigInteger;
 
 @Value(staticConstructor = "of")
 @EqualsAndHashCode
-public class Product {
+public class CartItem {
 
-    Barcode barcode;
-    BigDecimal unitPrice;
-    String description;
+    CartItemId id;
+    Product product;
+    BigInteger quantity;
 }

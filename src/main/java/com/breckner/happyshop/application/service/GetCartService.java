@@ -18,6 +18,6 @@ public class GetCartService implements GetCartUseCase {
     public ShoppingCart get(CartId id) {
 
         return loadCartPort.byId(id)
-            .orElseThrow(() -> new NotFoundException("cart"));
+            .orElseThrow(() -> new NotFoundException("shopping cart"));
     }
 }

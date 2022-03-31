@@ -16,6 +16,7 @@ import java.time.Instant;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import static org.hamcrest.Matchers.is;
@@ -104,7 +105,7 @@ class ShoppingCartJpaAdapterTest {
     private ShoppingCart mockShoppingCart(String id, Country country) {
         return ShoppingCart.of(
             CartId.of(id), country,
-            createdDate, List.of()
+            createdDate, Map.of()
         );
     }
 

@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 import java.time.Clock;
 import java.time.Instant;
 import java.time.ZoneId;
-import java.util.List;
+import java.util.Map;
 
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -26,7 +26,7 @@ class GetCartResponseDtoMapperTest {
             CartId.of("id_1"),
             Country.SWITZERLAND,
             DateTimeHelper.now(),
-            List.of()
+            Map.of()
         );
 
         GetCartController.GetCartResponseDto responseDto = mapper.toResponseDto(shoppingCart);

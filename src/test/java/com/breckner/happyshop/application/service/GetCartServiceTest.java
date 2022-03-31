@@ -16,7 +16,6 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import javax.validation.ConstraintDeclarationException;
 import java.util.Optional;
 
 import static org.hamcrest.MatcherAssert.assertThat;

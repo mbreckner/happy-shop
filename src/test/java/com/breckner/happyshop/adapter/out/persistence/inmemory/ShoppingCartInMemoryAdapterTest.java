@@ -7,6 +7,7 @@ import com.breckner.happyshop.domain.service.DateTimeHelper;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.Map;
 
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -21,7 +22,7 @@ class ShoppingCartInMemoryAdapterTest {
     void shouldPersistNewShoppingCart() {
         ShoppingCart shoppingCart = ShoppingCart.of(
             CartId.of("1"), Country.SWITZERLAND,
-            DateTimeHelper.now(), List.of()
+            DateTimeHelper.now(), Map.of()
         );
 
         adapterUnderTest.persist(shoppingCart);
@@ -44,7 +45,7 @@ class ShoppingCartInMemoryAdapterTest {
     private ShoppingCart mockShoppingCart(String id) {
         return ShoppingCart.of(
             CartId.of(id), Country.SWITZERLAND,
-            DateTimeHelper.now(), List.of()
+            DateTimeHelper.now(), Map.of()
         );
     }
 
