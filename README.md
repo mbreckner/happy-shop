@@ -1,9 +1,10 @@
 # Happy Shop
 
-Author: Markus Breckner
-LinkedIn: https://www.linkedin.com/in/markus-breckner-981374185/
+This is an example project to give you an idea of my way of working.
 
-This is an example project to give you an idea of my way of coding.
+## About me
+Author: Markus Breckner<p>
+LinkedIn: https://www.linkedin.com/in/markus-breckner-981374185/
 
 ## Background
 Happy Shop is a made up Company which offers some online shopping.
@@ -12,7 +13,7 @@ So this project will provide the backend service to provide the following use ca
 - Get a shopping cart with all items
 - Add a new item to the cart
 - Remove an item from the cart (Coming soon)
-- Change the quantity of a cart item
+- Change the quantity of a cart item (Coming soon)
 
 ## Technical Background
 
