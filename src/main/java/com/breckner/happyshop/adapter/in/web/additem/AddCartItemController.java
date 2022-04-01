@@ -1,4 +1,4 @@
-package com.breckner.happyshop.adapter.in.web;
+package com.breckner.happyshop.adapter.in.web.additem;
 
 import com.breckner.happyshop.application.port.in.AddCartItemsUseCase;
 import com.breckner.happyshop.application.port.in.CreateCartUseCase;

@@ -1,4 +1,4 @@
-package com.breckner.happyshop.adapter.in.web;
+package com.breckner.happyshop.adapter.in.web.getcart;
 
 import com.breckner.happyshop.domain.model.CartItem;
 import com.breckner.happyshop.domain.model.ShoppingCart;

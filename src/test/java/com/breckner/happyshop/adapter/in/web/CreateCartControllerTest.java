@@ -1,5 +1,6 @@
 package com.breckner.happyshop.adapter.in.web;
 
+import com.breckner.happyshop.adapter.in.web.createcart.CreateCartController;
 import com.breckner.happyshop.application.port.in.CreateCartUseCase;
 import com.breckner.happyshop.domain.model.Country;
 import com.breckner.happyshop.domain.model.ShoppingCart;
@@ -20,7 +21,6 @@ import static org.mockito.ArgumentMatchers.refEq;
 import static org.mockito.BDDMockito.then;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @ExtendWith(SpringExtension.class)

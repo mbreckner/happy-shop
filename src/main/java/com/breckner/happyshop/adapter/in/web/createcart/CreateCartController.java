@@ -1,4 +1,4 @@
-package com.breckner.happyshop.adapter.in.web;
+package com.breckner.happyshop.adapter.in.web.createcart;
 
 import com.breckner.happyshop.adapter.in.web.validator.ValidCountryCode;
 import com.breckner.happyshop.application.port.in.CreateCartUseCase;

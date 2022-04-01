@@ -1,5 +1,6 @@
-package com.breckner.happyshop.adapter.in.web;
+package com.breckner.happyshop.adapter.in.web.getcart;
 
+import com.breckner.happyshop.adapter.in.web.getcart.GetCartResponseDtoMapper;
 import com.breckner.happyshop.application.port.in.GetCartUseCase;
 import com.breckner.happyshop.domain.model.*;
 import com.fasterxml.jackson.annotation.JsonProperty;
