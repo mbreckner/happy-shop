@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class ProductInMemoryAdapter implements LoadProductPort {
+class ProductInMemoryAdapter implements LoadProductPort {
 
     private final ProductInMemoryRepository productInMemoryRepository;
 

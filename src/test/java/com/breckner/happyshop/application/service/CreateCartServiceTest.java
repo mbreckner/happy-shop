@@ -12,14 +12,19 @@ import org.springframework.boot.autoconfigure.validation.ValidationAutoConfigura
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import javax.validation.ConstraintDeclarationException;
+import javax.validation.ConstraintViolationException;
 
 import static org.mockito.BDDMockito.then;
 
 @ExtendWith(SpringExtension.class)
-@SpringBootTest
+@SpringBootTest(classes = {
+    PersistCartPort.class,
+    CreateCartService.class
+})
 @Import(ValidationAutoConfiguration.class)
 class CreateCartServiceTest {
 
@@ -27,7 +32,7 @@ class CreateCartServiceTest {
     private PersistCartPort persistCartPort;
 
     @Autowired
-    private CreateCartUseCase createCartUseCase;
+    private CreateCartService createCartUseCase;
 
     @Test
     void shouldCreateShoppingCart() {
@@ -43,7 +48,7 @@ class CreateCartServiceTest {
     void shouldThrowConstraintDeclarationException_WhenInputIsInvalid() {
         CreateCartUseCase.CreateCartInput input = new CreateCartUseCase.CreateCartInput(null);
 
-        Assertions.assertThrows(ConstraintDeclarationException.class, () -> createCartUseCase.create(input));
+        Assertions.assertThrows(ConstraintViolationException.class, () -> createCartUseCase.create(input));
     }
 
 }

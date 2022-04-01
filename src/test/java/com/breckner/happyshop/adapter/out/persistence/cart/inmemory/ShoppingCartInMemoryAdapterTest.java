@@ -13,9 +13,9 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 class ShoppingCartInMemoryAdapterTest {
 
-    private ShoppingCartInMemoryRepository shoppingCartInMemoryRepository = new ShoppingCartInMemoryRepository();
+    private final ShoppingCartInMemoryRepository shoppingCartInMemoryRepository = new ShoppingCartInMemoryRepository();
 
-    private ShoppingCartInMemoryAdapter adapterUnderTest = new ShoppingCartInMemoryAdapter(shoppingCartInMemoryRepository);
+    private final ShoppingCartInMemoryAdapter adapterUnderTest = new ShoppingCartInMemoryAdapter(shoppingCartInMemoryRepository);
 
     @Test
     void shouldPersistNewShoppingCart() {

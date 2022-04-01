@@ -20,15 +20,14 @@ import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.Optional;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.then;
 import static org.mockito.Mockito.when;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.is;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
@@ -62,7 +61,7 @@ class AddCartItemsServiceTest {
         assertThat(shoppingCartArg.getItems().size(), is(1));
         assertThat(shoppingCartArg.getItems().get(0).getId(), is(CartItemId.of("cartItemId")));
         assertThat(shoppingCartArg.getItems().get(0).getProduct(), is(product));
-        assertThat(shoppingCartArg.getItems().get(0).getQuantity(), is(BigInteger.TWO));
+        assertThat(shoppingCartArg.getItems().get(0).getQuantity(), is(BigDecimal.valueOf(2.00)));
 
     }
 

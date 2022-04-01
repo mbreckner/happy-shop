@@ -1,6 +1,5 @@
 package com.breckner.happyshop.adapter.in.web;
 
-import com.breckner.happyshop.application.port.in.CreateCartUseCase;
 import com.breckner.happyshop.application.port.in.GetCartUseCase;
 import com.breckner.happyshop.domain.model.CartId;
 import com.breckner.happyshop.domain.model.Country;
@@ -11,7 +10,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
