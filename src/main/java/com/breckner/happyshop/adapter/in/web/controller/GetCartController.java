@@ -5,6 +5,7 @@ import com.breckner.happyshop.domain.model.*;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -25,7 +26,7 @@ import java.util.List;
 class GetCartController {
 
     private final GetCartUseCase getCartUseCase;
-    private final GetCartResponseDtoMapper getCartResponseDtoMapper;
+    private final GetCartResponseDtoMapper getCartResponseDtoMapperDeprecated;
 
     @GetMapping(
         path = "/cart/{cartId}",
@@ -35,19 +36,20 @@ class GetCartController {
     public GetCartResponseDto create(@PathVariable @NotBlank String cartId) {
 
         ShoppingCart shoppingCart = getCartUseCase.get(CartId.of(cartId));
-        return getCartResponseDtoMapper.toResponseDto(shoppingCart);
+        return getCartResponseDtoMapperDeprecated.toResponseDto(shoppingCart);
     }
 
     @Data
+    @NoArgsConstructor
     @AllArgsConstructor
     static class GetCartResponseDto {
-        String id;
-        @JsonProperty("total_price") BigDecimal totalPrice;
-        @JsonProperty("country_code") String countryCode;
-        @JsonProperty("country_name") String countryName;
-        ZonedDateTime created;
-        String currency;
-        List<CartItemDto> cartItems;
+        private String id;
+        @JsonProperty("total_price") private BigDecimal totalPrice;
+        @JsonProperty("country_code") private String countryCode;
+        @JsonProperty("country_name") private String countryName;
+        @JsonProperty("created_date") private ZonedDateTime createdDate;
+        private String currency;
+        private List<CartItemDto> cartItems;
     }
 
     @Data

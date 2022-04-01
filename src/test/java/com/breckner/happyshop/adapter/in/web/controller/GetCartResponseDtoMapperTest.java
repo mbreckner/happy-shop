@@ -1,6 +1,5 @@
 package com.breckner.happyshop.adapter.in.web.controller;
 
-import com.breckner.happyshop.adapter.in.web.controller.GetCartResponseDtoMapper;
 import com.breckner.happyshop.domain.model.*;
 import com.breckner.happyshop.domain.service.DateTimeHelper;
 import org.junit.jupiter.api.Test;
@@ -11,12 +10,12 @@ import java.time.Instant;
 import java.time.ZoneId;
 import java.util.Map;
 
-import static org.hamcrest.Matchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
 
 class GetCartResponseDtoMapperTest {
 
-    GetCartResponseDtoMapper mapper = new GetCartResponseDtoMapper();
+    private final GetCartResponseDtoMapper mapper = GetCartResponseDtoMapper.INSTANCE;
 
     @Test
     void shouldMap() {
@@ -39,7 +38,7 @@ class GetCartResponseDtoMapperTest {
         assertThat(responseDto.getCountryName(), is("Switzerland"));
         assertThat(responseDto.getCurrency(), is("CHF"));
         assertThat(responseDto.getTotalPrice(), is(BigDecimal.valueOf(3.00)));
-        assertThat(responseDto.getCreated(), is(DateTimeHelper.now()));
+        assertThat(responseDto.getCreatedDate(), is(DateTimeHelper.now()));
         assertThat(responseDto.getCartItems().size(), is(1));
         assertThat(responseDto.getCartItems().get(0).getId(), is("1"));
         assertThat(responseDto.getCartItems().get(0).getQuantity(), is(BigDecimal.valueOf(5)));
