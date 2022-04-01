@@ -1,7 +1,6 @@
-package com.breckner.happyshop.adapter.in.web;
+package com.breckner.happyshop.adapter.in.web.general;
 
 import com.breckner.happyshop.domain.model.exception.NotFoundException;
-import lombok.Data;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -15,7 +14,7 @@ import java.util.Map;
 
 @ControllerAdvice
 @RestController
-public class ExceptionHandler {
+class ErrorHandler {
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @org.springframework.web.bind.annotation.ExceptionHandler(MethodArgumentNotValidException.class)

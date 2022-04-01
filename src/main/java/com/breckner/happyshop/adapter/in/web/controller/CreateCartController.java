@@ -1,6 +1,6 @@
-package com.breckner.happyshop.adapter.in.web.createcart;
+package com.breckner.happyshop.adapter.in.web.controller;
 
-import com.breckner.happyshop.adapter.in.web.validator.ValidCountryCode;
+import com.breckner.happyshop.adapter.in.web.general.ValidCountryCode;
 import com.breckner.happyshop.application.port.in.CreateCartUseCase;
 import com.breckner.happyshop.domain.model.Country;
 import com.breckner.happyshop.domain.model.ShoppingCart;

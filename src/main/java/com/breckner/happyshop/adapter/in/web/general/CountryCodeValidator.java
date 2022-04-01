@@ -1,4 +1,4 @@
-package com.breckner.happyshop.adapter.in.web.validator;
+package com.breckner.happyshop.adapter.in.web.general;
 
 import com.breckner.happyshop.domain.model.Country;
 

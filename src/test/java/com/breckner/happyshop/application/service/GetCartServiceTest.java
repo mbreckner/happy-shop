@@ -1,6 +1,5 @@
 package com.breckner.happyshop.application.service;
 
-import com.breckner.happyshop.application.port.in.GetCartUseCase;
 import com.breckner.happyshop.application.port.out.LoadCartPort;
 import com.breckner.happyshop.domain.model.CartId;
 import com.breckner.happyshop.domain.model.Country;
@@ -25,12 +24,15 @@ import static org.mockito.BDDMockito.then;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(SpringExtension.class)
-@SpringBootTest
+@SpringBootTest(classes = {
+    LoadCartPort.class,
+    GetCartService.class
+})
 @Import(ValidationAutoConfiguration.class)
 class GetCartServiceTest {
 
     @MockBean LoadCartPort loadCartPort;
-    @Autowired GetCartUseCase getCartUseCase;
+    @Autowired GetCartService getCartService;
 
     @Test
     void shouldLoadCart() {
@@ -38,7 +40,7 @@ class GetCartServiceTest {
         CartId cartId = CartId.of("1");
         when(loadCartPort.byId(any())).thenReturn(Optional.of(mockShoppingCart));
 
-        ShoppingCart result = getCartUseCase.get(cartId);
+        ShoppingCart result = getCartService.get(cartId);
 
         assertThat(result, is(mockShoppingCart));
         then(loadCartPort).should().byId(cartId);
@@ -50,7 +52,7 @@ class GetCartServiceTest {
         CartId cartId = CartId.of("1");
         when(loadCartPort.byId(any())).thenReturn(Optional.empty());
 
-        Assertions.assertThrows(NotFoundException.class, () -> getCartUseCase.get(cartId));
+        Assertions.assertThrows(NotFoundException.class, () -> getCartService.get(cartId));
 
     }
 

@@ -53,12 +53,10 @@ class ShoppingCartEntityMapper {
 
     private CartItem toCartItemDomainObject(CartItemJpaEntity cartItemJpaEntity) {
         return CartItem.of(
-            CartItemId.of(cartItemJpaEntity.getCartItemId()),
-            Product.of(
-                Barcode.of(cartItemJpaEntity.getBarcode()),
-                cartItemJpaEntity.getUnitPrice(),
-                cartItemJpaEntity.getDescription()
-            ),
+            cartItemJpaEntity.getCartItemId(),
+            cartItemJpaEntity.getBarcode(),
+            cartItemJpaEntity.getUnitPrice(),
+            cartItemJpaEntity.getDescription(),
             cartItemJpaEntity.getQuantity()
         );
     }

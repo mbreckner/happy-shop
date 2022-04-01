@@ -1,9 +1,10 @@
-package com.breckner.happyshop.adapter.in.web;
+package com.breckner.happyshop.adapter.in.web.controller;
 
-import com.breckner.happyshop.adapter.in.web.createcart.CreateCartController;
-import com.breckner.happyshop.application.port.in.CreateCartUseCase;
-import com.breckner.happyshop.domain.model.Country;
-import com.breckner.happyshop.domain.model.ShoppingCart;
+import com.breckner.happyshop.adapter.in.web.JsonHelper;
+import com.breckner.happyshop.application.port.in.AddCartItemsUseCase;
+import com.breckner.happyshop.domain.model.Barcode;
+import com.breckner.happyshop.domain.model.CartId;
+import com.breckner.happyshop.domain.model.CartItemId;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -16,20 +17,20 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 
-import static org.mockito.ArgumentMatchers.any;
+import java.math.BigDecimal;
+
 import static org.mockito.ArgumentMatchers.refEq;
 import static org.mockito.BDDMockito.then;
-import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @ExtendWith(SpringExtension.class)
 @WebMvcTest
 @ContextConfiguration(classes = {
-    CreateCartController.class,
-    CreateCartUseCase.class
+    AddCartItemController.class,
+    AddCartItemsUseCase.class
 })
-class CreateCartControllerTest {
+class AddCartItemControllerTest {
 
     @Autowired
     private ObjectMapper mapper;
@@ -38,28 +39,24 @@ class CreateCartControllerTest {
     private MockMvc mockMvc;
 
     @MockBean
-    private CreateCartUseCase createCartUseCase;
+    private AddCartItemsUseCase addCartItemsUseCase;
 
     @Test
-    void shouldReturn201() throws Exception {
-        when(createCartUseCase.create(any())).thenReturn(ShoppingCart.create(Country.SWITZERLAND));
-        mockMvc.perform(postRequest("request/create_cart.json"))
-            .andExpect(status().isCreated());
+    void shouldReturn204() throws Exception {
+        mockMvc.perform(postRequest("request/add_cart_item.json", "123"))
+            .andExpect(status().isNoContent());
 
-        then(createCartUseCase).should().create(refEq(new CreateCartUseCase.CreateCartInput(
-            Country.SWITZERLAND
+        then(addCartItemsUseCase).should().addCartItems(refEq(new AddCartItemsUseCase.AddCartItemsInput(
+            CartId.of("123"),
+            Barcode.of("barcode"),
+            CartItemId.of("cartItemId"),
+            BigDecimal.TEN
         )));
     }
 
-    @Test
-    void shouldReturn400_WhenCountryIsInvalid() throws Exception {
-        mockMvc.perform(postRequest("request/create_cart_invalid_country.json"))
-            .andExpect(status().isBadRequest());
-    }
+    private MockHttpServletRequestBuilder postRequest(String fileName, String id) {
 
-    private MockHttpServletRequestBuilder postRequest(String fileName) {
-
-        return post("/cart")
+        return post(String.format("/cart/%s/items", id))
             .contentType(MediaType.APPLICATION_JSON)
             .content(JsonHelper.readAsJsonString(fileName));
     }

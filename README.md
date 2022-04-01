@@ -33,10 +33,16 @@ No inner layer should depend on those because we do want to concentrate on our u
 
 If you are interested you can read more [here](https://reflectoring.io/spring-hexagonal/
 
+## Set up locally
+To run this service on your local machine you have two possibilities:
+1) Open the project with your IDEA like IntelliJ and run the HappyshopApplication
+2) Run it from your terminal by calling `./gradlew bootRun`. You need Java 11 to be installed on your machine
+
+When the service is running you can call swagger to see all the available endpoints and how to call them:
+http://localhost:8080/swagger-ui/#/
 
 ## Improvement ideas
 
-- Implement swagger
 - Use mapstruct for mapping
 - Add request/response logging with correlationId
 - Use caching

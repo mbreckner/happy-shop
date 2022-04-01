@@ -1,10 +1,7 @@
-package com.breckner.happyshop.adapter.in.web.additem;
+package com.breckner.happyshop.adapter.in.web.controller;
 
 import com.breckner.happyshop.application.port.in.AddCartItemsUseCase;
-import com.breckner.happyshop.application.port.in.CreateCartUseCase;
 import com.breckner.happyshop.domain.model.*;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +14,6 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
-import java.math.BigInteger;
 
 @RestController
 @RequiredArgsConstructor

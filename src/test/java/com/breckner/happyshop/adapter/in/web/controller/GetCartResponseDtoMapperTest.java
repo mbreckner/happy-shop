@@ -1,7 +1,6 @@
-package com.breckner.happyshop.adapter.in.web;
+package com.breckner.happyshop.adapter.in.web.controller;
 
-import com.breckner.happyshop.adapter.in.web.getcart.GetCartController;
-import com.breckner.happyshop.adapter.in.web.getcart.GetCartResponseDtoMapper;
+import com.breckner.happyshop.adapter.in.web.controller.GetCartResponseDtoMapper;
 import com.breckner.happyshop.domain.model.*;
 import com.breckner.happyshop.domain.service.DateTimeHelper;
 import org.junit.jupiter.api.Test;
@@ -27,12 +26,8 @@ class GetCartResponseDtoMapperTest {
             Country.SWITZERLAND,
             DateTimeHelper.now(),
             Map.of(CartItemId.of("1"), CartItem.of(
-                CartItemId.of("1"),
-                Product.of(
-                    Barcode.of("barcode"),
-                    BigDecimal.valueOf(0.60),
-                    "bananas"
-                ),
+                "1", "barcode",
+                BigDecimal.valueOf(0.60), "bananas",
                 BigDecimal.valueOf(5)
             ))
         );

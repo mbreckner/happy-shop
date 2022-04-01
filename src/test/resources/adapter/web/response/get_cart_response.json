@@ -3,6 +3,16 @@
   "country_code": "CHE",
   "country_name": "Switzerland",
   "currency": "CHF",
-  "products": [],
+  "cartItems": [
+    {
+      "id": "id_1",
+      "product": {
+        "barcode": "barcode",
+        "unitPrice": 1.55,
+        "description": "bananas"
+      },
+      "quantity": 1
+    }
+  ],
   "created": "2022-03-09T10:15:30Z"
 }

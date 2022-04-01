@@ -123,8 +123,10 @@ class ShoppingCartJpaAdapterTest {
 
     private ShoppingCart mockShoppingCart(String id, Country country) {
         CartItem cartItem = CartItem.of(
-            CartItemId.of("1"),
-            Product.of(Barcode.of("bc"), BigDecimal.TEN, "desc"),
+            "1",
+            "bc",
+            BigDecimal.TEN,
+            "desc",
             BigDecimal.ONE
         );
         return ShoppingCart.of(

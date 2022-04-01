@@ -1,4 +1,4 @@
-package com.breckner.happyshop.adapter.in.web.getcart;
+package com.breckner.happyshop.adapter.in.web.controller;
 
 import com.breckner.happyshop.domain.model.CartItem;
 import com.breckner.happyshop.domain.model.ShoppingCart;
@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class GetCartResponseDtoMapper {
+class GetCartResponseDtoMapper {
 
     public GetCartController.GetCartResponseDto toResponseDto(ShoppingCart shoppingCart) {
         return new GetCartController.GetCartResponseDto(

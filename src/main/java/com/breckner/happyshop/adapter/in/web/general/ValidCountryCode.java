@@ -1,4 +1,4 @@
-package com.breckner.happyshop.adapter.in.web.validator;
+package com.breckner.happyshop.adapter.in.web.general;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;

@@ -1,7 +1,6 @@
-package com.breckner.happyshop.adapter.in.web;
+package com.breckner.happyshop.adapter.in.web.controller;
 
-import com.breckner.happyshop.adapter.in.web.getcart.GetCartController;
-import com.breckner.happyshop.adapter.in.web.getcart.GetCartResponseDtoMapper;
+import com.breckner.happyshop.adapter.in.web.JsonHelper;
 import com.breckner.happyshop.application.port.in.GetCartUseCase;
 import com.breckner.happyshop.domain.model.CartId;
 import com.breckner.happyshop.domain.model.Country;
@@ -77,7 +76,15 @@ class GetCartControllerTest {
             "Switzerland",
             Instant.parse("2022-03-09T10:15:30Z").atZone(ZoneId.of("UTC")),
             "CHF",
-            List.of()
+            List.of(new GetCartController.CartItemDto(
+                "id_1",
+                new GetCartController.ProductDto(
+                    "barcode",
+                    BigDecimal.valueOf(1.55),
+                    "bananas"
+                ),
+                BigDecimal.ONE
+            ))
         );
     }
 }
