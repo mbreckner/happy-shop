@@ -34,11 +34,19 @@ No inner layer should depend on those because we do want to concentrate on our u
 
 If you are interested you can read more [here](https://reflectoring.io/spring-hexagonal/
 
-## Set up locally
-To run this service on your local machine you have two possibilities:
-1) Open the project with your IDEA like IntelliJ and run the HappyshopApplication
-2) Run it from your terminal by calling `./gradlew bootRun`. You need Java 11 to be installed on your machine
+## Run locally
 
+### Run with IntelliJ
+Open the project with your IDEA like IntelliJ and run the HappyshopApplication
+
+### Run from terminal
+Run it from your terminal by calling `./gradlew bootRun`. You need Java 11 to be installed on your machine
+
+### Run it with docker
+1) `docker build -t happyshop-docker .`
+2) `docker run -p 8080:8080 happyshop-docker`
+
+### Swagger
 When the service is running you can call swagger to see all the available endpoints and how to call them:
 - OpenAPI Json: http://localhost:8080/v3/api-docs
 - Swagger UI: http://localhost:8080/happyshop-swagger-ui

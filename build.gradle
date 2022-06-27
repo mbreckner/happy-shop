@@ -8,6 +8,13 @@ group = 'com.breckner'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
+springBoot {
+	mainClass.value("com.breckner.happyshop.HappyshopApplication")
+}
+bootJar {
+	mainClass.value("com.breckner.happyshop.HappyshopApplication")
+}
+
 repositories {
 	mavenCentral()
 }
