@@ -40,7 +40,8 @@ To run this service on your local machine you have two possibilities:
 2) Run it from your terminal by calling `./gradlew bootRun`. You need Java 11 to be installed on your machine
 
 When the service is running you can call swagger to see all the available endpoints and how to call them:
-http://localhost:8080/swagger-ui/#/
+- OpenAPI Json: http://localhost:8080/v3/api-docs
+- Swagger UI: http://localhost:8080/happyshop-swagger-ui
 
 ## Improvement ideas
 
