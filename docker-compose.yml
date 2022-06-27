@@ -1,0 +1,7 @@
+version: '3.7'
+services:
+  happyshop:
+    build: .
+    container_name: happyshop-docker-comp
+    ports:
+      - "8080:8080"
