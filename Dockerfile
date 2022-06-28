@@ -12,6 +12,6 @@ RUN ./gradlew build
 FROM build as run
 
 WORKDIR /app
-ARG JAR_FILE=build/libs/*.jar
+ARG JAR_FILE=build/libs/*RELEASE.jar
 COPY --from=build /build/${JAR_FILE} /app/app.jar
 ENTRYPOINT ["java","-jar","/app/app.jar"]
